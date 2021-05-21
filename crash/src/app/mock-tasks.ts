@@ -1,4 +1,6 @@
-export const TASKS = [
+import {Task} from './interfaces/task.interface';
+
+export const TASKS: Task[] = [
   {
     id: 1,
     text: 'Doctors Appointment',

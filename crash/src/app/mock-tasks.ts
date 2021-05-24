@@ -1,4 +1,4 @@
-import {Task} from './interfaces/task.interface';
+import { Task } from './interfaces/task.interface';
 
 export const TASKS: Task[] = [
   {

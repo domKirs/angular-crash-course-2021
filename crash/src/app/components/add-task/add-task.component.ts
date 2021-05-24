@@ -1,27 +1,22 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Task } from 'src/app/interfaces/task.interface';
 
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
-  styleUrls: ['./add-task.component.scss']
+  styleUrls: ['./add-task.component.scss'],
 })
-export class AddTaskComponent implements OnInit {
-
+export class AddTaskComponent {
   @Output() onAddTask: EventEmitter<Task> = new EventEmitter();
 
-  public text: string = '';
-  public day: string = '';
-  public reminder: boolean = false;
-  
-  private newTask: Task = {text: '', day: '', reminder: false};
+  public text = '';
+  public day = '';
+  public reminder = false;
 
-  constructor() { }
-
-  ngOnInit(): void { }
+  private newTask: Task = { text: '', day: '', reminder: false };
 
   public onSubmit(): void {
-    if(!this.text) {
+    if (!this.text) {
       alert('Please add a task');
       return;
     }
@@ -44,5 +39,4 @@ export class AddTaskComponent implements OnInit {
 
     this.updateDataOfNewTask();
   }
-
 }

@@ -1,25 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from './../../interfaces/task.interface';
-import { TaskService } from './../../services/task.service'
+import { TaskService } from './../../services/task.service';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.scss']
+  styleUrls: ['./tasks.component.scss'],
 })
 export class TasksComponent implements OnInit {
-
   public tasks?: Task[];
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
+    this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
   }
 
   public onDeleteTask(taskToDelete: Task): void {
-    this.taskService.deleteTask(taskToDelete).subscribe( _ => {
-      this.tasks = this.tasks?.filter(task => task.id !==  taskToDelete.id);
+    this.taskService.deleteTask(taskToDelete).subscribe(() => {
+      this.tasks = this.tasks?.filter((task) => task.id !== taskToDelete.id);
     });
   }
 
@@ -29,9 +28,8 @@ export class TasksComponent implements OnInit {
   }
 
   public onAddTask(taskToAdd: Task): void {
-    this.taskService.addTask(taskToAdd).subscribe(task => {
-      this.tasks?.push(task)
+    this.taskService.addTask(taskToAdd).subscribe((task) => {
+      this.tasks?.push(task);
     });
   }
-
 }
